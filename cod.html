@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="nom">Nombre</label>
+        <input type="text" id="nom">
+        <br>
+        <br>
+        <label for="ap">Apellidos</label>
+        <input type="text" id="ap">
+        <br>
+        <br>
+        <label for="fec">fecha nac</label>
+        <input type="date" id="fec">
+        <br>
+        <br>
+        <input type="submit" value="enviar" id="bt">
+        <div id="valor">
+
+        </div>
+    </form>
+</body>
+<script>
+    var cod = document.getElementById('bt').addEventListener('click', (event) =>{
+        event.preventDefault()
+        var nom = document.getElementById('nom').value;
+        var ap = document.getElementById('ap').value;
+        var fec = document.getElementById('fec').value;
+        var newN = nom[0];
+        var newP = ap.split(' ')[0];
+        var ewP = ap.split(' ')[1];
+        var fP = newN + newP[0] + ewP[0];
+        fP = fP.toUpperCase();
+        
+        var f = fec.split('-');
+        var f1 = f[2] + f[1] + f[0].slice(-2);
+        var final = fP + " - " + f1
+        valor.innerHTML = final;
+
+    });
+</script>
+</html>

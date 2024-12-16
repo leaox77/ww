@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="img/picana.jpg" alt="" onmouseover="cambio()">
+</body>
+<script>
+    function cambio(){
+        // una funcion que cambia de imagen cada 3 segundos 
+        var img = document.querySelector('img');
+        var interval;
+        img.addEventListener('mouseover', () => {
+            interval = setInterval(() => {
+            if (img.src.includes('picana.jpg')) {
+                img.src = 'img/picana2.jpg';
+            } else {
+                img.src = 'img/picana.jpg';
+            }
+            }, 3000);
+        });
+
+        img.addEventListener('mouseout', () => {
+            clearInterval(interval);
+            img.src = 'img/picana.jpg'; // Reset to original image when mouse is out
+        });
+
+    }
+</script>
+</html>

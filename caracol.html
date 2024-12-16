@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz Caracol</title>
+</head>
+<body>
+    <h1>Matriz Caracol</h1>
+    <div id="output"></div>
+</body>
+<script>
+    function generarMatrizCaracol(n) {
+        // Crear matriz vacía
+        let matriz = new Array(n).fill(0).map(() => new Array(n).fill(0));
+        
+        let valor = 1;
+        let inicioFila = 0, finFila = n - 1;
+        let inicioCol = 0, finCol = n - 1;
+        
+        while (inicioFila <= finFila && inicioCol <= finCol) {
+            // Llenar la fila superior
+            for (let col = inicioCol; col <= finCol; col++) {
+                matriz[inicioFila][col] = valor++;
+            }
+            inicioFila++;
+            
+            // Llenar la columna derecha
+            for (let fila = inicioFila; fila <= finFila; fila++) {
+                matriz[fila][finCol] = valor++;
+            }
+            finCol--;
+            
+            // Llenar la fila inferior (si aplica)
+            if (inicioFila <= finFila) {
+                for (let col = finCol; col >= inicioCol; col--) {
+                    matriz[finFila][col] = valor++;
+                }
+                finFila--;
+            }
+            
+            // Llenar la columna izquierda (si aplica)
+            if (inicioCol <= finCol) {
+                for (let fila = finFila; fila >= inicioFila; fila--) {
+                    matriz[fila][inicioCol] = valor++;
+                }
+                inicioCol++;
+            }
+        }
+        
+        return matriz;
+    }
+
+    function mostrarMatriz(matriz) {
+        let output = document.getElementById('output');
+        matriz.forEach(fila => {
+            let filaHTML = fila.join(' ') + '<br>';
+            output.innerHTML += filaHTML;
+        });
+    }
+
+    let n = 5; // Tamaño de la matriz
+    let matrizCaracol = generarMatrizCaracol(n);
+    mostrarMatriz(matrizCaracol);
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var n = parseInt(prompt("mete un numero para el array"));
+    var a = new Array();
+    var c = 0;
+    for(var i=0;i<n;i++){
+        a = Math.floor(Math.random()*1000);
+        if(a>99&&a<1000){
+            for(j=1;j<=a;j++){
+                if(a%j==0){
+                    c++;
+                }
+            }
+            if(c==2){
+                document.write(a + " es primo")
+            }
+            c=0;
+        }
+    }
+</script>
+</html>

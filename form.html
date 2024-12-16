@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="from">
+        <label for="ci">CI</label>
+        <input type="text" id="ci">
+        <br>
+        <br>
+        <label for="nom">Nombre</label>
+        <input type="text" id="nom">
+        <br>
+        <br>
+        <label for="email">Correo</label>
+        <input type="text" id="email">
+        <br>
+        <br>
+        <label for="pass">Password</label>
+        <input type="text" id="pass">
+        <br>
+        <br>
+        <input type="submit" value="enviar" id="bt">
+        <div id="valor">
+
+        </div>
+    </form>
+</body>
+<script>
+    document.getElementById('bt').addEventListener('click', (event) => {
+        event.preventDefault();
+        alert('envio anulado');
+        var ci = document.getElementById('ci').value;
+        var nom = document.getElementById('nom').value;
+        var email = document.getElementById('email').value;
+        var pass = document.getElementById('pass').value;
+        // You can use the values of ci, nom, and email here
+        console.log(ci, nom, email, pass);
+
+        var nomCor = true;
+        var emCor = true;
+        var ciCor = true;
+        var passCor = true;
+
+        var exCi = /^\d{8}\s[A-Z]{2,3}$/;
+        var exNom = /^[A-Z][a-z]+/;
+        var exEm = /^[a-zA-Z]+@[a-z]+\.[a-z]/;
+        var exPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,}$/;
+
+        if(ci == null || ci.length ==0 || !exCi.test(ci)){
+            alert("menfy")
+            ciCor = false;
+        }
+        if(nom == null || nom.length ==0 || !exNom.test(nom)){
+            alert("men")
+            nomCor = false;
+        }
+        if(email == null || email.length ==0 || !exEm.test(email)){
+            alert("me")
+            emCor = false;
+        }
+        if(pass == null || pass.length == 0 || !exPass.test(pass)){
+            alert('pass failed')
+            passCor = false;
+        }
+
+        if(nomCor == true && emCor == true && ciCor == true && passCor == true){
+            alert("formulario enviado correctamente")
+            window.location.reload();
+        }
+
+
+    });
+    
+    
+</script>
+</html>
